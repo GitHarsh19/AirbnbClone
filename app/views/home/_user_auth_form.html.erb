@@ -1,4 +1,5 @@
-<div class="bg-white px-2 pb-2 pt-5 sm:p-6 sm:pb-4" data-controller="users-by-email-auth">
+<div data-controller="users-by-email-auth">
+<div class="bg-white px-2 pb-2 pt-5 sm:p-6 sm:pb-4">
   <div class="sm:flex sm:items-start">
     <div>
       <div class="flex items-center justify-center">
@@ -29,14 +30,14 @@
        
         <div class="mt-2 flex flex-col">
         <label for="email" class="text-gray-800 dark:text-gray-100 text-sm font-bold leading-tight tracking-normal mb-2">Email</label>
-        <input id="email" autocomplete="off" class="text-gray-600 dark:text-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black dark:focus:border-black dark:border-gray-700 dark:bg-gray-800 bg-white font-normal w-76 h-10 flex items-center pl-3 text-sm border-gray-300 rounded border shadow" placeholder="harshit@example.com" data-users-by-email-auth-target="email" />
+        <input data-users-by-email-auth-target="email" type="text" id="email" name="email" autocomplete="on" class="text-gray-600 dark:text-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black dark:focus:border-black dark:border-gray-700 dark:bg-gray-800 bg-white font-normal w-76 h-10 flex items-center pl-3 text-sm border-gray-300 rounded border shadow" placeholder="harshit@example.com"/>
         </div>
 
         <div class="py-3 sm:flex sm:flex-row-reverse" style="
           padding-top: 25px;
           padding-bottom: 15px;
         ">
-        <button type="button" class="inline-flex w-full justify-center rounded-md font-normal w-76 h-10 items-center text-sm  border-black hover:bg-red-600 rounded border shadow-sm" data-users-by-email-auth-target="submit" >Continue</button>
+        <button data-users-by-email-auth-target="submit" type="button" class="inline-flex w-full justify-center rounded-md font-normal w-76 h-10 items-center text-sm  border-black hover:bg-red-600 rounded border shadow-sm"  >Continue</button>
         </div>
 
         <div class="relative">
@@ -59,4 +60,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>
