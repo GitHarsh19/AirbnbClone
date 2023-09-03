@@ -3,10 +3,17 @@
   justify-content: center;
   align-items: center;
 }
-
-
 #dropdown {
   margin: 8px;
   min-height: 20px;
   padding: 10px;
+}
+.invalid-inset-input-text-field {
+  border-color: rgb(244,63,93) !important;
+  label {
+  color: rgb(244,63,94) !important;
+  }
+  input[type="email"], input[type="text"]{
+  color: rgb(244,63,94) !important;
+  }
 }
