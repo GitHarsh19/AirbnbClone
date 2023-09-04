@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+10.times do
+	Property.create!(
+		name: Faker::Lorem.unique.word,
+		headline: Faker::Lorem.unique.sentence,
+		state: Faker::Address.state,
+		city: Faker::Address.city,
+		country: "United States",
+		description: Faker::Lorem.unique.paragraph,
+		address_1: Faker::Address.street_address
+	)
+end
