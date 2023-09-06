@@ -21,7 +21,7 @@ data-longitude="<%= current_user&.profile&.longitude %>"
 				<p class="mt-2 block text-sm font-medium text-gray-900truncate pointer-events-none"><%= property.city %>, <%= property.state %>, <%= property.country %> </p>
 				<p data-distance-away class="block text-sm font-medium text-gray-900 pointer-events-none"></p>
 				<p class="block text-sm font-medium text-gray-900 pointer-events-none">15 Sep-16 Sep</p>
-				<p class="block text-sm font-medium text-gray-900 pointer-events-none">$54 Per Night</p>
+				<p class="block text-sm font-medium text-gray-900 pointer-events-none"><%= humanized_money_with_symbol(property.price) %> per Night</p>
 		</li>
 	<% end %>
 </ul>
