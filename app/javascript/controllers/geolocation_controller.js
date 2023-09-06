@@ -5,37 +5,34 @@ import { isEmpty } from 'lodash-es';
 export default class extends Controller {
   static targets = ['property'];
   connect() {
-    console.log(this.element.dataset.latitude);
-
     if(isEmpty(this.element.dataset.latitude) && isEmpty(this.element.dataset.longitude)){
         window.navigator.geolocation.getCurrentPosition((pos) => { 
-        this.element.dataset.latitude = pos.coords.latitude;
-        this.element.dataset.longitude = pos.coords.longitude;
-
-        this.propertyTargets.forEach((propertyTarget) => {
-          let distanceFrom = getDistance({
-            latitude: this.element.dataset.latitude,
-            longitude: this.element.dataset.longitude        
-          }, 
-          {
-            latitude: propertyTarget.dataset.latitude,
-            longitude: propertyTarget.dataset.longitude
-          });
-          propertyTarget.querySelector('[data-distance-away]').innerHTML = `${Math.round(convertDistance(distanceFrom, 'km'))} Kms Away`;
-        });
+        this.setUserCoordinates(pos.coords);
+        this.setDistanceText();
       });
     } else {
-        this.propertyTargets.forEach((propertyTarget) => {
-          let distanceFrom = getDistance({
-            latitude: this.element.dataset.latitude,
-            longitude: this.element.dataset.longitude        
-          }, 
+        this.setDistanceText();
+    }
+  }
+  setUserCoordinates(coords){
+    this.element.dataset.latitude = coords.latitude;
+    this.element.dataset.longitude = coords.longitude;
+  }
+  getUserCoordinates(){
+    return {
+      latitude: this.element.dataset.latitude,
+      longitude: this.element.dataset.longitude
+    };
+  }
+  setDistanceText() {
+      this.propertyTargets.forEach((propertyTarget) => {
+          let distanceFrom = getDistance(
+            this.getUserCoordinates(), 
           {
             latitude: propertyTarget.dataset.latitude,
             longitude: propertyTarget.dataset.longitude
           });
           propertyTarget.querySelector('[data-distance-away]').innerHTML = `${Math.round(convertDistance(distanceFrom, 'km'))} Kms Away`;
         });
-    }
   }
 }
