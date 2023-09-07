@@ -9,9 +9,14 @@ class Property < ApplicationRecord
 
 	monetize :price_cents, allow_nil: true
 
+	has_many_attached :images, dependent: :destroy
+
 	geocoded_by :address
 	after_validation :geocode, if: -> { latitude.blank? && longitude.blank? }
 	def address
   		[state, country].compact.join(', ')
+	end
+	def default_image
+		images.first
 	end
 end
