@@ -11,6 +11,8 @@ class Property < ApplicationRecord
 
 	has_many_attached :images, dependent: :destroy
 
+	has_many :reviews, as: :reviewable
+
 	geocoded_by :address
 	after_validation :geocode, if: -> { latitude.blank? && longitude.blank? }
 	def address
@@ -19,4 +21,8 @@ class Property < ApplicationRecord
 	def default_image
 		images.first
 	end
+	def average_rating
+		reviews.average(:rating)
+	end
+
 end
