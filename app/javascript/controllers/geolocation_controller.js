@@ -24,6 +24,9 @@ export default class extends Controller {
       longitude: this.element.dataset.longitude
     };
   }
+  favourite(){
+    console.log('heloo favourite');
+  }
   setDistanceText() {
       this.propertyTargets.forEach((propertyTarget) => {
           let distanceFrom = getDistance(
