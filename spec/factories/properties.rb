@@ -1,10 +1,11 @@
 FactoryBot.define do
   factory :property do
     name { "MyString" }
-    city { "MyString" }
-    description { "MyText" }
-    country { "MyString" }
-    state { "MyString" }
     headline { "MyString" }
+    description { "MyText" }
+    address_1 { Faker::Address.street_address }
+    city { Faker::Address.city }
+    country { Faker::Address.state  }
+    state { Faker::Address.country  }
   end
 end

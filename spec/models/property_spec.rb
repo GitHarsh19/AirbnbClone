@@ -9,6 +9,9 @@ RSpec.describe Property, type: :model do
   it { should validate_presence_of(:country) }
   it { should validate_presence_of(:address_1) }
   it { is_expected.to monetize(:price).allow_nil }
+  
   it { should have_many(:reviews) }
+  it { should have_many(:favourites).dependent(:destroy) }
+  it { should have_many(:favourited_users).through(:favourites).source(:user) }
 
 end

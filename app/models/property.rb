@@ -13,6 +13,9 @@ class Property < ApplicationRecord
 
 	has_many :reviews, as: :reviewable
 
+	has_many :favourites, dependent: :destroy
+  	has_many :favourited_users, through: :favourites, source: :user
+
 	geocoded_by :address
 	after_validation :geocode, if: -> { latitude.blank? && longitude.blank? }
 	def address
